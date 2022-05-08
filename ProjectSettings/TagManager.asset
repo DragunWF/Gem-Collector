@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Road
   - Intersection
+  - Gem
   layers:
   - Default
   - TransparentFX
