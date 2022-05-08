@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    const float baseSpeed = 2f;
-    const float baseSteerSpeed = 225f;
+    const float baseSpeed = 1.5f;
+    const float baseSteerSpeed = 175f;
 
     const float maxAcceleration = 15f;
     float acceleration = 0f;
@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            acceleration -= 0.085f;
+            acceleration -= 0.15f;
             if (acceleration <= 0)
                 acceleration = 0;
 
@@ -79,7 +79,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            steerAcceleration -= 0.3f;
+            steerAcceleration -= 1f;
             if (steerAcceleration <= 0)
                 steerAcceleration = 0;
 
@@ -94,9 +94,9 @@ public class PlayerController : MonoBehaviour
         float bonusSpeed = 0f;
 
         if (OnRoad)
-            bonusSpeed += 2f;
-        if (OnIntersection)
             bonusSpeed += 1.5f;
+        if (OnIntersection)
+            bonusSpeed += 1.25f;
 
         return bonusSpeed;
     }

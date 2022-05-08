@@ -31,6 +31,8 @@ public class PlayerCollisions : MonoBehaviour
             case "Intersection":
                 player.ChangeRoadStatus(tag, isEntering);
                 break;
+            case "Gem":
+                break;
         }
     }
 }
