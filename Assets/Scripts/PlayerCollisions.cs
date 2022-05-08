@@ -6,6 +6,11 @@ public class PlayerCollisions : MonoBehaviour
 {
     PlayerController player;
 
+    void Start()
+    {
+        player = GetComponent<PlayerController>();
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
         CollisionEvent(other.tag, true);
