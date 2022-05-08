@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    const float baseSpeed = 5f;
-    const float baseSteerSpeed = 300f;
+    const float baseSpeed = 2f;
+    const float baseSteerSpeed = 225f;
 
     const float maxAcceleration = 15f;
     float acceleration = 0f;
@@ -14,6 +14,22 @@ public class PlayerController : MonoBehaviour
     const float maxSteerAcceleration = 50f;
     float steerAcceleration = 0f;
     bool steeringLeft;
+
+    public bool OnRoad { get; private set; }
+    public bool OnIntersection { get; private set; }
+
+    public void ChangeRoadStatus(string roadType, bool state)
+    {
+        switch (roadType)
+        {
+            case "Road":
+                OnRoad = state;
+                break;
+            case "Intersection":
+                OnIntersection = state;
+                break;
+        }
+    }
 
     void Update()
     {
