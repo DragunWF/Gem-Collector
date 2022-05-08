@@ -4,17 +4,16 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] const float baseSpeed = 5f;
-    [SerializeField] const float baseSteerSpeed = 300f;
+    const float baseSpeed = 5f;
+    const float baseSteerSpeed = 300f;
 
     const float maxAcceleration = 15f;
     float acceleration = 0f;
-    bool reversing;
+    bool carReversing;
 
-    void Start()
-    {
-
-    }
+    const float maxSteerAcceleration = 50f;
+    float steerAcceleration = 0f;
+    bool steeringLeft;
 
     void Update()
     {
@@ -26,7 +25,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow))
         {
-            reversing = Input.GetKey(KeyCode.DownArrow);
+            carReversing = Input.GetKey(KeyCode.DownArrow);
 
             acceleration += 0.15f;
             if (acceleration >= maxAcceleration)
@@ -37,11 +36,11 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            acceleration -= 0.2f;
+            acceleration -= 0.085f;
             if (acceleration <= 0)
                 acceleration = 0;
 
-            var force = reversing ? -acceleration : acceleration;
+            var force = carReversing ? -acceleration : acceleration;
             var friction = Time.deltaTime * force;
             transform.Translate(0, friction, 0);
         }
@@ -51,8 +50,24 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
         {
-            var rotateSpeed = Input.GetAxis("Horizontal") * Time.deltaTime * baseSteerSpeed;
+            steeringLeft = Input.GetKey(KeyCode.LeftArrow);
+
+            steerAcceleration += 5f;
+            if (steerAcceleration >= maxSteerAcceleration)
+                steerAcceleration = maxSteerAcceleration;
+
+            var rotateSpeed = Input.GetAxis("Horizontal") * Time.deltaTime * (baseSteerSpeed + steerAcceleration);
             transform.Rotate(0, 0, rotateSpeed);
+        }
+        else
+        {
+            steerAcceleration -= 0.3f;
+            if (steerAcceleration <= 0)
+                steerAcceleration = 0;
+
+            var force = steeringLeft ? -steerAcceleration : steerAcceleration;
+            var friction = Time.deltaTime * force;
+            transform.Rotate(0, 0, friction);
         }
     }
 }
