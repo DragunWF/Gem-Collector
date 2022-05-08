@@ -5,7 +5,8 @@ using UnityEngine;
 public class Gem : MonoBehaviour
 {
     const float hoverSpeed = 1.5f;
-    const float timeBeforeDirectionSwitch = 0.35f;
+    const float timeToSwitchDirection = 0.35f;
+    const float timeToRespawn = 30f;
 
     bool isHoveringUp;
     bool isActive = true;
@@ -18,7 +19,7 @@ public class Gem : MonoBehaviour
         {
             gemSprite.color = new Color(1, 1, 1, 0);
             isActive = false;
-            Invoke("ActivateGem", 5f);
+            Invoke("ActivateGem", timeToRespawn);
         }
     }
 
@@ -42,7 +43,7 @@ public class Gem : MonoBehaviour
     void SwitchHoverDirection()
     {
         isHoveringUp = isHoveringUp ? false : true;
-        Invoke("SwitchHoverDirection", timeBeforeDirectionSwitch);
+        Invoke("SwitchHoverDirection", timeToSwitchDirection);
     }
 
     void ActivateGem()
