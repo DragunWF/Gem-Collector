@@ -39,6 +39,8 @@ public class PlayerController : MonoBehaviour
 
     void CarMovement()
     {
+        var bonusSpeed = CheckForBonusSpeed();
+
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow))
         {
             carReversing = Input.GetKey(KeyCode.DownArrow);
@@ -47,7 +49,7 @@ public class PlayerController : MonoBehaviour
             if (acceleration >= maxAcceleration)
                 acceleration = maxAcceleration;
 
-            var speed = Input.GetAxis("Vertical") * Time.deltaTime * (baseSpeed + acceleration);
+            var speed = Input.GetAxis("Vertical") * Time.deltaTime * (baseSpeed + acceleration + bonusSpeed);
             transform.Translate(0, speed, 0);
         }
         else
@@ -85,5 +87,17 @@ public class PlayerController : MonoBehaviour
             var friction = Time.deltaTime * force;
             transform.Rotate(0, 0, friction);
         }
+    }
+
+    float CheckForBonusSpeed()
+    {
+        float bonusSpeed = 0f;
+
+        if (OnRoad)
+            bonusSpeed += 2f;
+        if (OnIntersection)
+            bonusSpeed += 1.5f;
+
+        return bonusSpeed;
     }
 }
