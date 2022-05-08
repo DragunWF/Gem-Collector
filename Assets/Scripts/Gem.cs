@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Gem : MonoBehaviour
 {
+    [SerializeField] Sprite[] gemSprites = new Sprite[6];
+    Sprite lastUsedSprite;
+    ParticleSystem onCollectedParticle;
+
     const float hoverSpeed = 1.5f;
     const float timeToSwitchDirection = 0.35f;
     const float timeToRespawn = 30f;
@@ -16,16 +20,14 @@ public class Gem : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player" && isActive)
-        {
-            gemSprite.color = new Color(1, 1, 1, 0);
-            isActive = false;
-            Invoke("ActivateGem", timeToRespawn);
-        }
+            OnGemCollected();
     }
 
     void Start()
     {
+        onCollectedParticle = GetComponent<ParticleSystem>();
         gemSprite = GetComponent<SpriteRenderer>();
+        SpawnGem();
         SwitchHoverDirection();
     }
 
@@ -46,9 +48,26 @@ public class Gem : MonoBehaviour
         Invoke("SwitchHoverDirection", timeToSwitchDirection);
     }
 
-    void ActivateGem()
+    void PickRandomSprite()
     {
-        gemSprite.color = new Color(1, 1, 1, 1);
+        gemSprite.sprite = gemSprites[Random.Range(0, gemSprites.Length - 1)];
+        if (lastUsedSprite == gemSprite.sprite)
+            PickRandomSprite();
+        else
+            lastUsedSprite = gemSprite.sprite;
+    }
+
+    void SpawnGem()
+    {
         isActive = true;
+        gemSprite.color = new Color(1, 1, 1, 1);
+        PickRandomSprite();
+    }
+
+    void OnGemCollected()
+    {
+        isActive = false;
+        gemSprite.color = new Color(1, 1, 1, 0);
+        Invoke("SpawnGem", timeToRespawn);
     }
 }
