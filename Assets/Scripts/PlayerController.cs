@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    PlayerState playerState;
+
     const float baseSpeed = 1.5f;
     const float baseSteerSpeed = 175f;
 
@@ -31,10 +33,23 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        playerState = GetComponent<PlayerState>();
+    }
+
     void Update()
     {
-        CarMovement();
-        CarSteering();
+        if (playerState.IsAlive)
+        {
+            CarMovement();
+            CarSteering();
+        }
+        else
+        {
+            var playerSprite = GetComponent<SpriteRenderer>();
+            playerSprite.color = new Color(1, 1, 1, 0);
+        }
     }
 
     void CarMovement()
