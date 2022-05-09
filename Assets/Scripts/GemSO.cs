@@ -11,8 +11,13 @@ public class GemSO : ScriptableObject
     [Header("Particles")]
     [SerializeField] Color particleColor;
 
-    public Sprite PickRandomShape()
+    public Sprite PickRandomGemShape()
     {
         return gemSprites[Random.Range(0, gemSprites.Length - 1)];
+    }
+
+    public Color GetParticleColor()
+    {
+        return particleColor;
     }
 }
