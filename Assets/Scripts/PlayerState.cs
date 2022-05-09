@@ -6,15 +6,23 @@ public class PlayerState : MonoBehaviour
 {
     ParticleSystem explosionParticle;
     AudioSource explosionSoundEffect;
+
+    EndScreen endScreen;
     Timer timer;
 
     public bool IsAlive { get; private set; }
 
-    void Start()
+    void Awake()
     {
+        endScreen = FindObjectOfType<EndScreen>();
+        timer = FindObjectOfType<Timer>();
+
         explosionSoundEffect = GetComponent<AudioSource>();
         explosionParticle = GetComponent<ParticleSystem>();
-        timer = FindObjectOfType<Timer>();
+    }
+
+    void Start()
+    {
         IsAlive = true;
     }
 
@@ -25,6 +33,14 @@ public class PlayerState : MonoBehaviour
             IsAlive = false;
             explosionParticle.Play();
             explosionSoundEffect.Play();
+
+            Invoke("IntializeEndScreen", 3);
         }
+    }
+
+    void IntializeEndScreen()
+    {
+        endScreen.gameObject.SetActive(true);
+        endScreen.TriggerEndScreen();
     }
 }
