@@ -4,20 +4,12 @@ using UnityEngine;
 
 public class Gem : MonoBehaviour
 {
-    [SerializeField] Sprite[] gemSprites = new Sprite[6];
-    SpriteRenderer gemSprite;
-    Sprite lastUsedSprite;
+    [SerializeField] GemSO[] gemTypes = new GemSO[6];
+    GemSO currentGem;
+    GemSO lastUsedGemType;
 
+    SpriteRenderer gemSprite;
     ParticleSystem onCollectedParticle;
-    Color[] particleColors = new Color[6] {
-       new Color32(22, 102, 224, 128), // Blue
-       new Color32(29, 222, 177, 128), // Cyan
-       new Color32(24, 222, 77, 128), // Green
-       new Color32(235, 145, 28, 128), // Orange
-       new Color32(227, 39, 199, 128), // Pink
-       new Color32(232, 220, 56, 128), // Yellow
-    };
-    int particleColorIndex;
 
     const float hoverSpeed = 1.5f;
     const float timeToSwitchDirection = 0.35f;
@@ -57,28 +49,25 @@ public class Gem : MonoBehaviour
         Invoke("SwitchHoverDirection", timeToSwitchDirection);
     }
 
-    void PickRandomSprite()
+    void PickRandomGem()
     {
-        var index = Random.Range(0, gemSprites.Length - 1);
-        gemSprite.sprite = gemSprites[index];
+        currentGem = gemTypes[Random.Range(0, gemTypes.Length - 1)];
 
-        if (lastUsedSprite == gemSprite.sprite)
-            PickRandomSprite();
+        if (lastUsedGemType == currentGem)
+            PickRandomGem();
         else
-        {
-            lastUsedSprite = gemSprite.sprite;
-            particleColorIndex = index;
-        }
+            lastUsedGemType = currentGem;
     }
 
     void SpawnGem()
     {
         isActive = true;
         gemSprite.color = new Color(1, 1, 1, 1);
-        PickRandomSprite();
+        PickRandomGem();
 
+        gemSprite.sprite = currentGem.PickRandomGemShape();
         var particleSettings = onCollectedParticle.main;
-        particleSettings.startColor = particleColors[particleColorIndex];
+        particleSettings.startColor = currentGem.GetParticleColor();
     }
 
     void OnGemCollected()
