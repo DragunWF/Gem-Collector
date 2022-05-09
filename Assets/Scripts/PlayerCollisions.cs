@@ -6,7 +6,7 @@ public class PlayerCollisions : MonoBehaviour
 {
     PlayerController player;
 
-    void Start()
+    void Awake()
     {
         player = GetComponent<PlayerController>();
     }
@@ -30,8 +30,6 @@ public class PlayerCollisions : MonoBehaviour
                 break;
             case "Intersection":
                 player.ChangeRoadStatus(tag, isEntering);
-                break;
-            case "Gem":
                 break;
         }
     }

@@ -24,7 +24,7 @@ public class Gem : MonoBehaviour
             OnGemCollected();
     }
 
-    void Start()
+    void Awake()
     {
         playerState = FindObjectOfType<PlayerState>();
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
@@ -32,7 +32,10 @@ public class Gem : MonoBehaviour
         onCollectedParticle = GetComponent<ParticleSystem>();
         collectedSoundEffect = GetComponent<AudioSource>();
         gemSprite = GetComponent<SpriteRenderer>();
+    }
 
+    void Start()
+    {
         isActive = true;
         SpawnGem();
     }
