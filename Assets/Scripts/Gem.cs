@@ -10,6 +10,7 @@ public class Gem : MonoBehaviour
 
     SpriteRenderer gemSprite;
     ParticleSystem onCollectedParticle;
+    AudioSource collectedSoundEffect;
 
     const float timeToRespawn = 30f;
     bool isActive = true;
@@ -23,6 +24,7 @@ public class Gem : MonoBehaviour
     void Start()
     {
         onCollectedParticle = GetComponent<ParticleSystem>();
+        collectedSoundEffect = GetComponent<AudioSource>();
         gemSprite = GetComponent<SpriteRenderer>();
         SpawnGem();
     }
@@ -52,6 +54,7 @@ public class Gem : MonoBehaviour
     {
         isActive = false;
         onCollectedParticle.Play();
+        collectedSoundEffect.Play();
         gemSprite.color = new Color(1, 1, 1, 0);
         Invoke("SpawnGem", timeToRespawn);
     }
