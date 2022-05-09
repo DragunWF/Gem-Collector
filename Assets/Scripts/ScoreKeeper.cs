@@ -11,7 +11,7 @@ public class ScoreKeeper : MonoBehaviour
     public void IncreaseScore()
     {
         score += Random.Range(5, 25);
-        scoreText.text = "Score: " + score;
+        scoreText.text = "Score: " + string.Format("{0:n0}", score);
     }
 
     void Start()
