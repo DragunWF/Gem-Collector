@@ -6,16 +6,17 @@ using TMPro;
 public class ScoreKeeper : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI scoreText;
-    int score = 0;
+    public int Score { get; private set; }
 
     public void IncreaseScore()
     {
-        score += Random.Range(5, 25);
-        scoreText.text = "Score: " + string.Format("{0:n0}", score);
+        Score += Random.Range(5, 25);
+        scoreText.text = "Score: " + string.Format("{0:n0}", Score);
     }
 
     void Start()
     {
-        scoreText.text = "Score: " + score;
+        Score = 0;
+        scoreText.text = "Score: " + Score;
     }
 }
