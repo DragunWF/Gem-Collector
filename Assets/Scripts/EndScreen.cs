@@ -55,6 +55,6 @@ public class EndScreen : MonoBehaviour
     {
         retryButton.gameObject.SetActive(true);
         endText.gameObject.SetActive(true);
-        endText.text = "Congrats! You got a score of\n" + scoreKeeper.Score;
+        endText.text = string.Format("Congrats! You got a score of\n{0:n0}", scoreKeeper.Score);
     }
 }
