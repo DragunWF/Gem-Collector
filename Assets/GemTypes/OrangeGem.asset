@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: OrangeGem
   m_EditorClassIdentifier: 
   gemSprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 542334faadbb9fe46b703e975e525ae8, type: 3}
+  - {fileID: 21300000, guid: 7e0b6a3a3fbf02649bc0336195083f1b, type: 3}
+  - {fileID: 21300000, guid: 0758d1d6ff3320b4d81df55d11be0321, type: 3}
+  - {fileID: 21300000, guid: 1b4992c636ab7ae49b88fbbdaf2a45f1, type: 3}
+  - {fileID: 21300000, guid: 83667565a3db41e4596193dff71e1c32, type: 3}
+  - {fileID: 21300000, guid: 91b51cd0e466a174781aae6362821504, type: 3}
+  - {fileID: 21300000, guid: fb2a51919b3df524b9ef677fbe178915, type: 3}
   particleColor: {r: 0.92156863, g: 0.5686275, b: 0.10980392, a: 0.7058824}

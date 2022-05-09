@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: YellowGem
   m_EditorClassIdentifier: 
   gemSprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 61270cc9eeb742a45be1d7f9a24819eb, type: 3}
+  - {fileID: 21300000, guid: f6bc47f2ebbbe104aac21f877fe858c4, type: 3}
+  - {fileID: 21300000, guid: f3201952985db1449b898a4b6d5ecdb5, type: 3}
+  - {fileID: 21300000, guid: 7592200740b95064d9d3c35ac4988c69, type: 3}
+  - {fileID: 21300000, guid: 5b1bbad228e262446ad6b25506b3133f, type: 3}
+  - {fileID: 21300000, guid: 2a39c52983342e14d84c32ab8f3ed421, type: 3}
+  - {fileID: 21300000, guid: 5f4f83afee4b93546a9dd02d6dd00556, type: 3}
   particleColor: {r: 0.9098039, g: 0.8627451, b: 0.21960784, a: 0.7058824}

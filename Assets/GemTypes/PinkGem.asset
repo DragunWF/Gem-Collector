@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: PinkGem
   m_EditorClassIdentifier: 
   gemSprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: f3bbedc5449ebfe4eba92a2fab42d3a8, type: 3}
+  - {fileID: 21300000, guid: 57e6830422013004c8cd3830f8081ef5, type: 3}
+  - {fileID: 21300000, guid: a2a3ac064333f6a43ae01fee179a39cb, type: 3}
+  - {fileID: 21300000, guid: 583773bdcae779940b0d8cddd733d66b, type: 3}
+  - {fileID: 21300000, guid: 55cab85e8409b0f41a65874dc60e1165, type: 3}
+  - {fileID: 21300000, guid: 11bfca4767097e44cbad3201c85724b2, type: 3}
+  - {fileID: 21300000, guid: 478f2aec01f4b4a409c432e587f3356c, type: 3}
   particleColor: {r: 0.9372549, g: 0.07450981, b: 0.78039217, a: 0.7058824}

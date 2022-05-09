@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: GreenGem
   m_EditorClassIdentifier: 
   gemSprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: ad261fa7b0d7c0345a18250b57227f1a, type: 3}
+  - {fileID: 21300000, guid: 5efd4b5aa6578bf41a550504529bb41b, type: 3}
+  - {fileID: 21300000, guid: 7c5f73c77f3b4144697c708dfdcc405c, type: 3}
+  - {fileID: 21300000, guid: a71c893b98b7c4a4cbcec3fe4793aec7, type: 3}
+  - {fileID: 21300000, guid: 474a92eb4e064c94590b9e58563902a6, type: 3}
+  - {fileID: 21300000, guid: f8022b0ca86bfe248af6daf6a15a396e, type: 3}
+  - {fileID: 21300000, guid: 0dc7b306de3f5434fa17cdc394098fcd, type: 3}
   particleColor: {r: 0.09411765, g: 0.87058824, b: 0.105882354, a: 0.7058824}

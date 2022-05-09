@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: CyanGem
   m_EditorClassIdentifier: 
   gemSprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: c178c63dfa182bc4cb239e7e08496114, type: 3}
+  - {fileID: 21300000, guid: 3962852dfeca6a44a80904ea7c31873d, type: 3}
+  - {fileID: 21300000, guid: 0fea3e895e60b9d4a87895fc1420bd2c, type: 3}
+  - {fileID: 21300000, guid: 559de4a888e2246458aab72086bf886d, type: 3}
+  - {fileID: 21300000, guid: 31ecf7ca6ef02dc488caae23e8537ac2, type: 3}
+  - {fileID: 21300000, guid: 2a0dd2efb2d72904ab0c8c38a4a653f6, type: 3}
+  - {fileID: 21300000, guid: d181e192e04308843a7ceb66ea54e3e2, type: 3}
   particleColor: {r: 0.07450981, g: 0.87058824, b: 0.69411767, a: 0.7058824}
