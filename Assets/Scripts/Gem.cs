@@ -12,19 +12,21 @@ public class Gem : MonoBehaviour
     ParticleSystem onCollectedParticle;
     AudioSource collectedSoundEffect;
 
-    const float timeToRespawn = 30f;
+    const float timeToRespawn = 20f;
     bool isActive;
 
+    PlayerState playerState;
     ScoreKeeper scoreKeeper;
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player" && isActive)
+        if (other.tag == "Player" && isActive && playerState.IsAlive)
             OnGemCollected();
     }
 
     void Start()
     {
+        playerState = FindObjectOfType<PlayerState>();
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
 
         onCollectedParticle = GetComponent<ParticleSystem>();
