@@ -13,13 +13,13 @@ public class Gem : MonoBehaviour
     AudioSource collectedSoundEffect;
 
     const float timeToRespawn = 30f;
-    public bool IsActive { get; private set; }
+    bool isActive;
 
     ScoreKeeper scoreKeeper;
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player" && IsActive)
+        if (other.tag == "Player" && isActive)
             OnGemCollected();
     }
 
@@ -31,7 +31,7 @@ public class Gem : MonoBehaviour
         collectedSoundEffect = GetComponent<AudioSource>();
         gemSprite = GetComponent<SpriteRenderer>();
 
-        IsActive = true;
+        isActive = true;
         SpawnGem();
     }
 
@@ -47,7 +47,7 @@ public class Gem : MonoBehaviour
 
     void SpawnGem()
     {
-        IsActive = true;
+        isActive = true;
         gemSprite.color = new Color(1, 1, 1, 1);
         PickRandomGem();
 
@@ -58,7 +58,7 @@ public class Gem : MonoBehaviour
 
     void OnGemCollected()
     {
-        IsActive = false;
+        isActive = false;
         scoreKeeper.IncreaseScore();
 
         onCollectedParticle.Play();
