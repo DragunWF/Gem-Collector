@@ -6,16 +6,12 @@ public class Gem : MonoBehaviour
 {
     [SerializeField] GemSO[] gemTypes = new GemSO[6];
     GemSO currentGem;
-    GemSO lastUsedGemType;
+    GemSO lastUsedGem;
 
     SpriteRenderer gemSprite;
     ParticleSystem onCollectedParticle;
 
-    const float hoverSpeed = 1.5f;
-    const float timeToSwitchDirection = 0.35f;
     const float timeToRespawn = 30f;
-
-    bool isHoveringUp;
     bool isActive = true;
 
     void OnTriggerEnter2D(Collider2D other)
@@ -29,34 +25,16 @@ public class Gem : MonoBehaviour
         onCollectedParticle = GetComponent<ParticleSystem>();
         gemSprite = GetComponent<SpriteRenderer>();
         SpawnGem();
-        SwitchHoverDirection();
-    }
-
-    void Update()
-    {
-        Hover();
-    }
-
-    void Hover()
-    {
-        var speed = isHoveringUp ? hoverSpeed : -hoverSpeed;
-        transform.Translate(0, speed * Time.deltaTime, 0);
-    }
-
-    void SwitchHoverDirection()
-    {
-        isHoveringUp = isHoveringUp ? false : true;
-        Invoke("SwitchHoverDirection", timeToSwitchDirection);
     }
 
     void PickRandomGem()
     {
         currentGem = gemTypes[Random.Range(0, gemTypes.Length - 1)];
 
-        if (lastUsedGemType == currentGem)
+        if (lastUsedGem == currentGem)
             PickRandomGem();
         else
-            lastUsedGemType = currentGem;
+            lastUsedGem = currentGem;
     }
 
     void SpawnGem()
