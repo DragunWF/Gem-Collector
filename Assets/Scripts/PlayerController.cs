@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     const float baseSpeed = 1.5f;
     const float baseSteerSpeed = 175f;
 
-    const float maxAcceleration = 15f;
+    const float maxAcceleration = 10f;
     float acceleration = 0f;
     bool carReversing;
 
