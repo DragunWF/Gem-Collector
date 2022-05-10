@@ -7,23 +7,24 @@ public class GameManager : MonoBehaviour
 {
     EndScreen endScreen;
     int sceneBuildIndex;
+    int mainSceneBuildIndex = 1;
 
     void Awake()
     {
         sceneBuildIndex = SceneManager.GetActiveScene().buildIndex;
-        if (sceneBuildIndex == 0)
+        if (sceneBuildIndex == mainSceneBuildIndex)
             endScreen = FindObjectOfType<EndScreen>();
     }
 
     void Start()
     {
-        if (sceneBuildIndex == 0)
+        if (sceneBuildIndex == mainSceneBuildIndex)
             endScreen.gameObject.SetActive(false);
     }
 
     public void LoadMainScene()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(mainSceneBuildIndex);
     }
 
     public void ReloadScene()
