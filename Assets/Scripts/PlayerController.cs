@@ -56,9 +56,12 @@ public class PlayerController : MonoBehaviour
     {
         var bonusSpeed = CheckForBonusSpeed();
 
-        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow))
+        var arrowKeyPressed = (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow));
+        var wdKeyPressed = (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S));
+
+        if (arrowKeyPressed || wdKeyPressed)
         {
-            carReversing = Input.GetKey(KeyCode.DownArrow);
+            carReversing = Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S);
 
             acceleration += 0.15f;
             if (acceleration >= maxAcceleration)
@@ -81,9 +84,12 @@ public class PlayerController : MonoBehaviour
 
     void CarSteering()
     {
-        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
+        var arrowKeyPressed = (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow));
+        var wdKeyPressed = (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D));
+
+        if (arrowKeyPressed || wdKeyPressed)
         {
-            steeringLeft = Input.GetKey(KeyCode.LeftArrow);
+            steeringLeft = Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A);
 
             steerAcceleration += 5;
             if (steerAcceleration >= maxSteerAcceleration)
