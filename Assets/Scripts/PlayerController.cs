@@ -10,10 +10,14 @@ public class PlayerController : MonoBehaviour
     const float baseSteerSpeed = 175;
 
     const float maxAcceleration = 10;
+    const float accelerationSpeed = 5;
+    const float deaccelerationSpeed = 8;
     float acceleration = 0f;
     bool carReversing;
 
     const float maxSteerAcceleration = 50;
+    const float steerAccelerationSpeed = 30;
+    const float steerDeaccelerationSpeed = 40;
     float steerAcceleration = 0f;
     bool steeringLeft;
 
@@ -63,7 +67,7 @@ public class PlayerController : MonoBehaviour
         {
             carReversing = Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S);
 
-            acceleration += 0.15f;
+            acceleration += Time.deltaTime * accelerationSpeed;
             if (acceleration >= maxAcceleration)
                 acceleration = maxAcceleration;
 
@@ -72,7 +76,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            acceleration -= 0.15f;
+            acceleration -= Time.deltaTime * deaccelerationSpeed;
             if (acceleration <= 0)
                 acceleration = 0;
 
@@ -91,7 +95,7 @@ public class PlayerController : MonoBehaviour
         {
             steeringLeft = Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A);
 
-            steerAcceleration += 5;
+            steerAcceleration += Time.deltaTime * steerAccelerationSpeed;
             if (steerAcceleration >= maxSteerAcceleration)
                 steerAcceleration = maxSteerAcceleration;
 
@@ -100,7 +104,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            steerAcceleration -= 1;
+            steerAcceleration -= Time.deltaTime * steerDeaccelerationSpeed;
             if (steerAcceleration <= 0)
                 steerAcceleration = 0;
 

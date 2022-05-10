@@ -46,6 +46,7 @@ public class EndScreen : MonoBehaviour
 
         if (!isDisplayed && alphaSlider >= 255)
         {
+            background.color = new Color(0, 0, 0, 1);
             isDisplayed = true;
             Invoke("DisplayUI", 1);
         }
