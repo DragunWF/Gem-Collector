@@ -7,14 +7,14 @@ public class Timer : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI timerText;
 
+    bool timerStarted;
     const float timeLimitValue = 60;
     public float TimeValue { get; private set; }
-    bool timerStarted;
 
     void Start()
     {
         TimeValue = timeLimitValue;
-        timerText.text = "Time Left: " + timeLimitValue;
+        timerText.text = string.Format("Time Left: {0}", timeLimitValue);
         Invoke("StartTimer", 3);
     }
 
@@ -27,7 +27,7 @@ public class Timer : MonoBehaviour
                 TimeValue = 0;
 
             var seconds = Mathf.RoundToInt(TimeValue);
-            timerText.text = "Time Left: " + seconds;
+            timerText.text = string.Format("Time Left: {0}", seconds);
         }
     }
 
