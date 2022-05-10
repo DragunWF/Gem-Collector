@@ -21,6 +21,11 @@ public class GameManager : MonoBehaviour
             endScreen.gameObject.SetActive(false);
     }
 
+    public void LoadMainScene()
+    {
+        SceneManager.LoadScene(0);
+    }
+
     public void ReloadScene()
     {
         SceneManager.LoadScene(sceneBuildIndex);
